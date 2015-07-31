@@ -1,0 +1,28 @@
+{% extends 'layout/layout.html.twig' %}
+
+{% block body -%}
+
+<h1>Articles index</h1>
+
+<p><a href="{{ path('blog_new') }}">Create new article</a></p>
+
+<ul>
+    {% for article in all_articles %}
+        <li>{{ article.title }}</li>
+    {% endfor %}
+</ul>
+
+<ul>
+    {% for page in range(1, pages) %}
+        {% if (page == 1) %}
+            <li><a href="{{ path('blog') }}">Page-{{ page }}</a></li>
+        {% else %}
+            <li><a href="{{ path('blog', {'page': page}) }}">Page-{{ page }}</a></li>
+        {% endif %}
+    {% endfor %}
+</ul>
+
+{%- endblock %}
+
+
+
